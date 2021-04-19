@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk_version
+    buildToolsVersion build_versions.build_tools_version
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk_version
+        targetSdkVersion build_versions.target_sdk_version
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+
+        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", '"https://api.mapbox.com"')
+        buildConfigField("String", "API_KEY", '"pk.eyJ1IjoieC1zeWFpZnVsbGFoLXgiLCJhIjoiY2tnN3V0YjZpMDc0YTJ5bWg2bWJwZzhxYiJ9.T-GO8Nq-mSh9KTK3iZu0Sg"')
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    packagingOptions {
+        exclude "**/attach_hotspot_windows.dll"
+        exclude "META-INF/licenses/ASM"
+        exclude "META-INF/AL2.0"
+        exclude "META-INF/LGPL2.1"
+    }
+}
+
+dependencies {
+
+    implementation project(':map_box:map_box_search:map_box_search_domain')
+
+    testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+    androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
+
+    api "com.squareup.retrofit2:retrofit:2.9.0"
+    api "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    api "com.google.code.gson:gson:2.8.6"
+
+    api "androidx.room:room-runtime:$vRoom"
+    api "androidx.room:room-ktx:$vRoom"
+    androidTestImplementation "androidx.room:room-testing:$vRoom"
+}

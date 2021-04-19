@@ -1,0 +1,10 @@
+include ':map_box'
+include ':map_box:map_box_search'
+include ':map_box:map_box_search:map_box_search_presentation'
+include ':map_box:map_box_search:map_box_search_data'
+include ':map_box:map_box_search:map_box_search_domain'
+rootProject.name = "Android Map Box"
+
+include(
+        ":app",
+)
