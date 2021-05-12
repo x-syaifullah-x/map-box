@@ -40,7 +40,8 @@ dependencies {
     testImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
     androidTestImplementation "com.github.x-syaifullah-x.android-module-test:test:$vAndroidModuleTest"
 
-    api "org.koin:koin-core:2.1.6"
-    api "org.koin:koin-android:2.1.6"
-    api "org.koin:koin-android-viewmodel:2.1.6"
+    api "io.insert-koin:koin-core:2.1.6"
+    api "io.insert-koin:koin-android:2.1.6"
+    api "io.insert-koin:koin-android-viewmodel:2.1.6"
+    testImplementation "io.insert-koin:koin-test:2.1.6"
 }
